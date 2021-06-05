@@ -1,0 +1,108 @@
+body {
+  width: 100vw;
+  height: 100%;
+  background-color: #181820;
+  color: white;
+}
+.btn {
+  border: 0;
+  background-color: royalblue;
+  border-radius: 2px;
+  color: white;
+  padding: 4px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+}
+
+.app {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+.title {
+  color: white;
+}
+
+.todoItem {
+  position: relative;
+  height: 30px;
+  width: 400px;
+  padding: 20px 10px;
+  border-radius: 8px;
+  background-color: #2e2e3d;
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  transition: all 1s ease;
+}
+
+.todoItem:hover {
+  transform: scale(1.1);
+}
+
+.enterBox {
+  position: relative;
+  height: 50px;
+  width: 400px;
+  padding: 20px 10px;
+  border-radius: 8px;
+  background-color: #181820;
+  border: 2px solid #2e2e3d;
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  transition: all 1s ease;
+}
+
+.enterBox:hover {
+  border: 2px solid #52526d;
+}
+
+.enterBox input {
+  color: white;
+  background: #181820;
+  border: none;
+}
+
+.todoItem .delete {
+  position: absolute;
+  right: 0;
+}
+
+.todoItem p {
+  padding: 10px;
+}
+
+.todoItem input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}
+
+.input {
+  border-radius: 4px;
+  width: 100%;
+  padding-left: 10px;
+  height: 28px;
+  line-height: 28px;
+}
+
+.delete {
+  border: 0;
+  background-color: rgb(225, 65, 204);
+  border-radius: 4px;
+  color: white;
+  padding: 4px 10px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.task-list {
+  min-height: 40px;
+}
