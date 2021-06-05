@@ -33,7 +33,7 @@ body {
 .todoItem {
   position: relative;
   height: 30px;
-  width: 400px;
+  width: 300px;
   padding: 20px 10px;
   border-radius: 8px;
   background-color: #2e2e3d;
@@ -50,7 +50,7 @@ body {
 .enterBox {
   position: relative;
   height: 50px;
-  width: 400px;
+  width: 300px;
   padding: 20px 10px;
   border-radius: 8px;
   background-color: #181820;
@@ -105,4 +105,13 @@ body {
 
 .task-list {
   min-height: 40px;
+}
+
+@media (min-width: 376px) {
+  .todoItem {
+    width: 400px;
+  }
+  .enterBox {
+    width: 400px;
+  }
 }
