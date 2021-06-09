@@ -28,7 +28,18 @@ class Modal {
     this._commit(this.tasks);
   }
 
- 
+  editTask(id, updateText) {
+    this.tasks = this.tasks.map((task) => {
+      return task.id === id
+        ? {
+            id: task.id,
+            text: updateText,
+            complete: task.complete,
+          }
+        : task;
+    });
+  }
+
   deleteTask(id) {
     this.tasks = this.tasks.filter(
       (task) => task.id !== id
@@ -120,8 +131,12 @@ class View {
           "button",
           "delete"
         );
+        const editButton = this.createElement(
+          "button",
+          "edit"
+        );
         deleteButton.textContent = "Delete";
-        li.append(checkbox, p, deleteButton);
+        li.append(checkbox, p, editButton, deleteButton);
 
         this.completedTaskList.append(li);
       } else {
@@ -134,13 +149,18 @@ class View {
 
         const p = this.createElement("p");
         p.textContent = task.text;
+        const editButton = this.createElement(
+          "button",
+          "edit"
+        );
+        editButton.textContent = "Edit";
 
         const deleteButton = this.createElement(
           "button",
           "delete"
         );
         deleteButton.textContent = "Delete";
-        li.append(checkbox, p, deleteButton);
+        li.append(checkbox, p, editButton, deleteButton);
 
         this.taskList.append(li);
       }
@@ -197,8 +217,6 @@ class Controller {
     this.modal.addTask(taskText);
   };
 
-
-
   handleDeleteTask = (id) => {
     this.modal.deleteTask(id);
   };
@@ -206,8 +224,9 @@ class Controller {
   handleToggleTask = (id) => {
     this.modal.toggleTask(id);
   };
+  handleEditTodo = (id, taskText) => {
+    this.modal.editTask(id, taskText);
+  };
 }
 
 const app = new Controller(new Modal(), new View());
-
-
