@@ -134,5 +134,27 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 1s ease;
+  opacity: 0;
+  transition: all 1.5s ease;
+}
+
+.show {
+  animation: show 1.5s forwards;
+}
+.hide {
+  visibility: visible;
+  opacity: 1;
+  animation: hide 1.5s forwards;
+}
+@keyframes show {
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+@keyframes hide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }

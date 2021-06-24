@@ -94,8 +94,10 @@ class View {
     notifInfo.textContent = info;
     card.append(notifInfo);
     this.app.append(card);
+    card.classList.add("show");
+
     setTimeout(() => {
-      card.remove();
+      card.classList.add("hide");
     }, 1500);
   }
 
