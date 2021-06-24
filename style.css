@@ -144,7 +144,7 @@ body {
 .hide {
   visibility: visible;
   opacity: 1;
-  animation: hide 1.5s forwards;
+  animation: hide 2s forwards;
 }
 @keyframes show {
   to {
