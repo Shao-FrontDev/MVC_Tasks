@@ -15,7 +15,7 @@ class Modal {
   }
 
   addTask(taskText) {
-    const task = {
+    const newTask = {
       id:
         this.tasks.length > 0
           ? this.tasks[this.tasks.length - 1].id + 1
@@ -24,7 +24,7 @@ class Modal {
       complete: false,
     };
 
-    this.tasks.push(task);
+    this.tasks.push(newTask);
     this._commit(this.tasks);
   }
 
@@ -57,7 +57,6 @@ class Modal {
           }
         : task
     );
-    console.log("toggleTask");
     this._commit(this.tasks);
   }
   bindTaskListChanged(callback) {
@@ -111,10 +110,17 @@ class View {
         this.completedTaskList.firstChild
       );
     }
+    if (tasks.length === 0) {
+      const info = this.createElement("p", "notification");
 
+      info.textContent = "现在还没有任务，快来添加任务把";
+      this.taskList.insertAdjacentElement(
+        "afterbegin",
+        info
+      );
+    }
     tasks.forEach((task) => {
       if (task.complete) {
-        console.log(task);
         const li = this.createElement("li", "todoItem");
         li.id = task.id;
 
@@ -131,12 +137,9 @@ class View {
           "button",
           "delete"
         );
-        const editButton = this.createElement(
-          "button",
-          "edit"
-        );
+
         deleteButton.textContent = "Delete";
-        li.append(checkbox, p, editButton, deleteButton);
+        li.append(checkbox, p, deleteButton);
 
         this.completedTaskList.append(li);
       } else {
@@ -149,18 +152,13 @@ class View {
 
         const p = this.createElement("p");
         p.textContent = task.text;
-        const editButton = this.createElement(
-          "button",
-          "edit"
-        );
-        editButton.textContent = "Edit";
 
         const deleteButton = this.createElement(
           "button",
           "delete"
         );
         deleteButton.textContent = "Delete";
-        li.append(checkbox, p, editButton, deleteButton);
+        li.append(checkbox, p, deleteButton);
 
         this.taskList.append(li);
       }
@@ -214,7 +212,15 @@ class Controller {
   };
 
   handleAddTask = (taskText) => {
-    this.modal.addTask(taskText);
+    const pass = utlis.handlerDuplicated(
+      this.modal.tasks,
+      taskText
+    );
+    if (pass) {
+      this.modal.addTask(taskText);
+    } else {
+      alert("该任务已经存在");
+    }
   };
 
   handleDeleteTask = (id) => {
@@ -230,3 +236,15 @@ class Controller {
 }
 
 const app = new Controller(new Modal(), new View());
+
+utlis = {
+  handlerDuplicated(arr, content) {
+    let result = true;
+    arr.forEach((task) => {
+      if (task.text === content.trim()) {
+        result = false;
+      }
+    });
+    return result;
+  },
+};

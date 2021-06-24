@@ -115,3 +115,8 @@ body {
     width: 400px;
   }
 }
+
+.notification {
+  padding: 16px;
+  color: gray;
+}
