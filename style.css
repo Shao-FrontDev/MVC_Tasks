@@ -107,23 +107,14 @@ body {
   min-height: 40px;
 }
 
-@media (min-width: 376px) {
-  .todoItem {
-    width: 400px;
-  }
-  .enterBox {
-    width: 400px;
-  }
-}
-
 .notification {
   padding: 16px;
   color: gray;
 }
 
 .notifCard {
-  width: 400px;
-  height: 300px;
+  width: 300px;
+  height: 200px;
   border-radius: 16px;
   background-color: #52526d;
   color: white;
@@ -156,5 +147,18 @@ body {
   to {
     opacity: 0;
     visibility: hidden;
+  }
+}
+
+@media (min-width: 376px) {
+  .notifCard {
+    width: 400px;
+    height: 300px;
+  }
+  .todoItem {
+    width: 400px;
+  }
+  .enterBox {
+    width: 400px;
   }
 }
