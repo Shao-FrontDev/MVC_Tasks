@@ -120,3 +120,19 @@ body {
   padding: 16px;
   color: gray;
 }
+
+.notifCard {
+  width: 400px;
+  height: 300px;
+  border-radius: 16px;
+  background-color: #52526d;
+  color: white;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease;
+}

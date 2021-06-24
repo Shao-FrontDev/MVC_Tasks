@@ -71,6 +71,7 @@ class Modal {
 
 class View {
   constructor() {
+    this.app = this.getElement(".app");
     this.tasks = this.getElement(".tasks");
     this.input = this.getElement(".input");
     this.taskList = this.getElement(".task-list");
@@ -85,6 +86,17 @@ class View {
     if (className) element.classList.add(className);
 
     return element;
+  }
+
+  displayNotifCard(info) {
+    const card = this.createElement("div", "notifCard");
+    const notifInfo = this.createElement("p");
+    notifInfo.textContent = info;
+    card.append(notifInfo);
+    this.app.append(card);
+    setTimeout(() => {
+      card.remove();
+    }, 1500);
   }
 
   getElement(selector) {
@@ -219,7 +231,8 @@ class Controller {
     if (pass) {
       this.modal.addTask(taskText);
     } else {
-      alert("该任务已经存在");
+      const info = "该任务已经存在了";
+      this.view.displayNotifCard(info);
     }
   };
 
